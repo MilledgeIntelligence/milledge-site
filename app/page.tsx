@@ -98,7 +98,7 @@ export default function MilledgeLanding() {
       <section id="pillars" className="pt-10 sm:pt-14 pb-16 sm:pb-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">Three pillars that define Milledge Intelligence</h2>
-          <p className="mt-3 text-slate-600 max-w-2xl">Pre positioned, structured, and supplied—so you don’t chase the market.</p>
+          <p className="mt-3 text-slate-600 max-w-2xl">Pre-positioned, structured, and supplied—so you don’t chase the market.</p>
           <div className="mt-10 grid md:grid-cols-3 gap-6">
             {[
               {
