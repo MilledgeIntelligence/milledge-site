@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Milledge Intelligence",
-  description: "Deal‑closing intelligence for flat‑rolled steel buyers",
+  description: "For steel buyers who want to outmaneuver markets, not out muscle them.",
 };
 
 import "./globals.css";
