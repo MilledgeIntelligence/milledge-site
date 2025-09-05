@@ -98,7 +98,7 @@ export default function MilledgeLanding() {
       <section id="pillars" className="pt-10 sm:pt-14 pb-16 sm:pb-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">Three pillars that define Milledge Intelligence</h2>
-          <p className="mt-3 text-slate-600 max-w-2xl">Pre-positioned, structured, and supplied—so you don’t chase the market.</p>
+          <p className="mt-3 text-slate-600 max-w-2xl">Pre-positioned, structured, and supplied so you don’t chase the market.</p>
           <div className="mt-10 grid md:grid-cols-3 gap-6">
             {[
               {
@@ -109,12 +109,12 @@ export default function MilledgeLanding() {
               {
                 icon: DollarSign,
                 title: "Performance based contract structuring (RaaS)",
-                desc: "We align incentives to measurable outcomes: improved terms, timing advantage, and risk adjusted savings. All priced as Results as a Service.",
+                desc: "We align incentives to measurable outcomes: improved terms, timing advantage, and risk adjusted savings. All priced as Results-as-a-Service.",
               },
               {
                 icon: Building2,
                 title: "Supply Options & Access",
-                desc: "Capability driven routes to the right mills and service centers by spec, coating, geography, and capacity—so projects stay supplied when markets tighten.",
+                desc: "Capability driven routes to the right mills and service centers by spec, coating, geography, and capacity so projects stay supplied when markets tighten.",
               },
             ].map((c, i) => (
               <div key={i} className="rounded-3xl border border-slate-200 p-6 shadow-sm bg-white">
