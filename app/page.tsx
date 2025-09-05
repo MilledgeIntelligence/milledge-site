@@ -237,7 +237,7 @@ export default function MilledgeLanding() {
               </div>
               <button className="mt-4 inline-flex items-center gap-2 rounded-2xl bg-slate-900 text-white px-5 py-2.5 text-sm shadow-sm hover:shadow">
                 <Mail className="h-4 w-4"/> Request Scope Call
-              </button>
+              <a href="https://calendly.com/alexg-milledge...">
               <p className="mt-3 text-[11px] text-slate-500">By submitting, you agree to be contacted about Milledge services. We don’t share or sell your data.</p>
             </form>
           </div>
