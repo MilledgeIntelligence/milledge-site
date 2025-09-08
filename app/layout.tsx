@@ -8,6 +8,14 @@ import "./globals.css";
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        {/* Calendly popup widget CSS (prevents invisible overlay / freeze) */}
+        <link
+          id="calendly-widget-css"
+          rel="stylesheet"
+          href="https://assets.calendly.com/assets/external/widget.css"
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
