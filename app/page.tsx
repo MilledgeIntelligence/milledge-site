@@ -3,25 +3,20 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import {
-  LineChart,
-  ShieldCheck,
-  Timer,
-  DollarSign,
-  Building2,
-  Sparkles,
-  ArrowRight,
-  Mail,
-  Globe,
-  FileText,
+  LineChart, ShieldCheck, Timer, DollarSign, Building2,
+  Sparkles, ArrowRight, Mail, Globe, FileText,
 } from "lucide-react";
 
+/** Use your actual event link here if it's not /intro-30 */
+const CALENDLY_URL = "https://calendly.com/alexg-milledge/intro-30?hide_gdpr_banner=1";
+
 export default function MilledgeLanding() {
-  // Load Plausible + Calendly widget once
+  // Load Plausible + Calendly widget JS once
   useEffect(() => {
     if (!document.getElementById("plausible-script")) {
       const s = document.createElement("script");
       s.id = "plausible-script";
-      s.setAttribute("defer", "");
+      s.defer = true;
       s.setAttribute("data-domain", "milledge.ai");
       s.src = "https://plausible.io/js/script.js";
       document.head.appendChild(s);
@@ -39,33 +34,30 @@ export default function MilledgeLanding() {
     (window as any).plausible && (window as any).plausible(name, { props });
   };
 
-  // Open Calendly with prefill (uses popup widget when available)
+  // Open Calendly with prefill (name/email + custom answers for company/notes)
   const openCalendlyPrefilled = (
-    name = "",
-    email = "",
-    company = "",
-    notes = ""
+    name = "", email = "", company = "", notes = ""
   ) => {
-    const baseUrl = "https://calendly.com/alexg-milledge?hide_gdpr_banner=1";
     const w = window as any;
 
-    if (w.Calendly && typeof w.Calendly.initPopupWidget === "function") {
+    if (w.Calendly?.initPopupWidget) {
       w.Calendly.initPopupWidget({
-        url: baseUrl,
+        url: CALENDLY_URL,
         prefill: {
           name,
           email,
+          // Calendly maps a1..a10 to your Invitee Questions in this event
           customAnswers: { a1: company, a2: notes },
         },
       });
       return;
     }
 
-    // Fallback (name/email only via query string)
+    // Fallback (new tab) – only name/email pass via querystring
     const qs = new URLSearchParams();
     if (name) qs.set("name", name);
     if (email) qs.set("email", email);
-    const url = `${baseUrl}&${qs.toString()}`;
+    const url = `${CALENDLY_URL}&${qs.toString()}`;
     const win = window.open(url, "_blank", "noopener");
     if (!win) window.location.href = url;
   };
@@ -90,9 +82,7 @@ export default function MilledgeLanding() {
     <div className="min-h-screen bg-white text-slate-900">
       {/* Top Ribbon */}
       <div className="bg-slate-900 text-white text-center text-xs sm:text-sm py-2 px-4">
-        <span className="opacity-90">
-          Now booking 2 new Private Label Intelligence Cells for Q4 2025.
-        </span>
+        <span className="opacity-90">Now booking 2 new Private Label Intelligence Cells for Q4 2025.</span>
       </div>
 
       {/* Navigation */}
@@ -109,10 +99,10 @@ export default function MilledgeLanding() {
             <a href="#contact" className="hover:text-slate-600">Contact</a>
           </div>
           <a
-            href="https://calendly.com/alexg-milledge?utm_source=nav&utm_medium=cta_button&utm_campaign=site_launch&utm_content=start_scope_call"
+            href={`${CALENDLY_URL}&utm_source=nav&utm_medium=cta_button&utm_campaign=site_launch&utm_content=start_scope_call`}
             target="_blank"
             rel="noreferrer"
-            onClick={() => track("cta_click", { placement: "nav", destination: "calendly" })}
+            onClick={() => track('cta_click', { placement: 'nav', destination: 'calendly' })}
             className="inline-flex items-center gap-2 rounded-xl bg-slate-900 text-white px-4 py-2 text-sm shadow-sm hover:shadow transition-shadow"
           >
             <Sparkles className="h-4 w-4" /> Start a Scope Call
@@ -125,7 +115,7 @@ export default function MilledgeLanding() {
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-100 via-white to-white" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-12 sm:pb-16">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
-            <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <motion.div initial={{opacity:0, y:12}} animate={{opacity:1,y:0}} transition={{duration:0.5}}>
               <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight leading-tight">
                 For steel buyers who want to outmaneuver markets, not out muscle them.
               </h1>
@@ -134,40 +124,37 @@ export default function MilledgeLanding() {
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <a
-                  href="https://calendly.com/alexg-milledge?utm_source=hero&utm_medium=cta_button&utm_campaign=site_launch&utm_content=book_intro_call"
+                  href={`${CALENDLY_URL}&utm_source=hero&utm_medium=cta_button&utm_campaign=site_launch&utm_content=book_intro_call`}
                   target="_blank"
                   rel="noreferrer"
-                  onClick={() => track("cta_click", { placement: "hero", destination: "calendly" })}
+                  onClick={() => track('cta_click', { placement: 'hero', destination: 'calendly' })}
                   className="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 text-white px-6 py-3 text-sm font-medium shadow-sm hover:shadow"
                 >
-                  Book Intro Call <ArrowRight className="h-4 w-4" />
+                  Book Intro Call <ArrowRight className="h-4 w-4"/>
                 </a>
-                <a
-                  href="#offerings"
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-300 px-6 py-3 text-sm font-medium hover:bg-slate-50"
-                >
+                <a href="#offerings" className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-300 px-6 py-3 text-sm font-medium hover:bg-slate-50">
                   See Engagement Deliverables
                 </a>
               </div>
               <div className="mt-6 flex flex-wrap items-center gap-6 text-xs text-slate-500">
-                <div className="flex items-center gap-2"><ShieldCheck className="h-4 w-4" /> Performance based options</div>
-                <div className="flex items-center gap-2"><Timer className="h-4 w-4" /> Sprint style delivery</div>
-                <div className="flex items-center gap-2"><LineChart className="h-4 w-4" /> Buy Signal Watch</div>
+                <div className="flex items-center gap-2"><ShieldCheck className="h-4 w-4"/> Performance based options</div>
+                <div className="flex items-center gap-2"><Timer className="h-4 w-4"/> Sprint style delivery</div>
+                <div className="flex items-center gap-2"><LineChart className="h-4 w-4"/> Buy Signal Watch</div>
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }} className="lg:pl-10">
+            <motion.div initial={{opacity:0, y:12}} animate={{opacity:1,y:0}} transition={{duration:0.5, delay:0.1}} className="lg:pl-10">
               <div className="rounded-3xl border border-slate-200 shadow-sm p-6 bg-white">
                 <div className="text-xs font-medium text-slate-500">Sample Dashboard</div>
                 <div className="mt-3 grid grid-cols-3 gap-4">
                   {[
-                    { label: "HRC Futures", value: "$↑ 38" },
-                    { label: "Spot Sentiment", value: "Neutral" },
-                    { label: "Energy Index", value: "Soft" },
-                    { label: "Housing Starts", value: "Holding" },
-                    { label: "OEM Orders", value: "Mixed" },
-                    { label: "Import Parity", value: "Tight" },
-                  ].map((k, i) => (
+                    {label: "HRC Futures", value: "$↑ 38"},
+                    {label: "Spot Sentiment", value: "Neutral"},
+                    {label: "Energy Index", value: "Soft"},
+                    {label: "Housing Starts", value: "Holding"},
+                    {label: "OEM Orders", value: "Mixed"},
+                    {label: "Import Parity", value: "Tight"},
+                  ].map((k,i)=> (
                     <div key={i} className="rounded-2xl border border-slate-200 p-4">
                       <div className="text-[11px] uppercase tracking-wide text-slate-500">{k.label}</div>
                       <div className="mt-1 text-lg font-semibold">{k.value}</div>
@@ -262,10 +249,10 @@ export default function MilledgeLanding() {
           <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">Outcomes we optimize</h2>
           <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { kpi: "$500M+", label: "Value unlocked via timing & terms" },
-              { kpi: "3–8%", label: "Typical contract improvement range" },
-              { kpi: "< 4 wks", label: "Time to first insights sprint" },
-              { kpi: "Board ready", label: "Outputs your execs can use" },
+              {kpi: "$500M+", label: "Value unlocked via timing & terms"},
+              {kpi: "3–8%", label: "Typical contract improvement range"},
+              {kpi: "< 4 wks", label: "Time to first insights sprint"},
+              {kpi: "Board ready", label: "Outputs your execs can use"},
             ].map((item, i) => (
               <div key={i} className="rounded-3xl border border-slate-200 p-6 shadow-sm bg-white text-center">
                 <div className="text-2xl font-semibold">{item.kpi}</div>
@@ -281,10 +268,10 @@ export default function MilledgeLanding() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
             {[
-              { icon: FileText, label: "Executive briefs" },
-              { icon: Globe, label: "Private client portal" },
-              { icon: LineChart, label: "Broker executed hedge overlay" },
-              { icon: ShieldCheck, label: "Confidential by design" },
+              {icon: FileText, label: "Executive briefs"},
+              {icon: Globe, label: "Private client portal"},
+              {icon: LineChart, label: "Broker executed hedge overlay"},
+              {icon: ShieldCheck, label: "Confidential by design"},
             ].map((d, i) => (
               <div key={i} className="rounded-2xl border border-slate-200 p-4 flex items-center gap-2">
                 <d.icon className="h-4 w-4" />
@@ -301,16 +288,9 @@ export default function MilledgeLanding() {
           <div className="grid lg:grid-cols-2 gap-10 items-start">
             <div>
               <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">Tell us your steel challenge</h2>
-              <p className="mt-3 text-slate-300 max-w-xl">
-                Executives, owners, and procurement leaders use Milledge to time contracts, structure terms, and communicate clearly with boards and customers.
-              </p>
+              <p className="mt-3 text-slate-300 max-w-xl">Executives, owners, and procurement leaders use Milledge to time contracts, structure terms, and communicate clearly with boards and customers.</p>
               <div className="mt-6 text-sm text-slate-300">
-                <p>
-                  Prefer email? Reach out at{" "}
-                  <a href="mailto:hello@milledge.ai" className="underline underline-offset-4">
-                    hello@milledge.ai
-                  </a>
-                </p>
+                <p>Prefer email? Reach out at <a href="mailto:hello@milledge.ai" className="underline underline-offset-4">hello@milledge.ai</a></p>
               </div>
             </div>
 
@@ -333,15 +313,10 @@ export default function MilledgeLanding() {
                   <textarea name="message" rows={4} className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" placeholder="Briefly describe your contract, timing window, or negotiation goals" />
                 </div>
               </div>
-
               <button type="submit" className="mt-4 inline-flex items-center gap-2 rounded-2xl bg-slate-900 text-white px-5 py-2.5 text-sm shadow-sm hover:shadow">
-                <Mail className="h-4 w-4" />
-                Request Scope Call
+                <Mail className="h-4 w-4"/> Request Scope Call
               </button>
-
-              <p className="mt-3 text-[11px] text-slate-500">
-                By submitting, you agree to be contacted about Milledge services. We don’t share or sell your data.
-              </p>
+              <p className="mt-3 text-[11px] text-slate-500">By submitting, you agree to be contacted about Milledge services. We don’t share or sell your data.</p>
             </form>
           </div>
         </div>
