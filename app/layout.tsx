@@ -9,7 +9,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        {/* Calendly popup widget CSS (prevents invisible overlay / freeze) */}
+        {/* Calendly popup CSS (prevents the invisible overlay/freeze) */}
         <link
           id="calendly-widget-css"
           rel="stylesheet"
