@@ -7,8 +7,8 @@ import {
   Sparkles, ArrowRight, Mail, Globe, FileText,
 } from "lucide-react";
 
-/** Use your actual event link here if it's not /intro-30 */
-const CALENDLY_URL = "https://calendly.com/alexg-milledge/intro-30?hide_gdpr_banner=1";
+/** Your specific event link (verified, no 404) */
+const CALENDLY_URL = "https://calendly.com/alexg-milledge/30min?hide_gdpr_banner=1";
 
 export default function MilledgeLanding() {
   // Load Plausible + Calendly widget JS once
@@ -46,14 +46,14 @@ export default function MilledgeLanding() {
         prefill: {
           name,
           email,
-          // Calendly maps a1..a10 to your Invitee Questions in this event
+          // a1/a2 map to Invitee Questions in your 30min event
           customAnswers: { a1: company, a2: notes },
         },
       });
       return;
     }
 
-    // Fallback (new tab) – only name/email pass via querystring
+    // Fallback (new tab): name/email only via querystring
     const qs = new URLSearchParams();
     if (name) qs.set("name", name);
     if (email) qs.set("email", email);
