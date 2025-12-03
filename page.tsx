@@ -24,10 +24,6 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <div className="bg-slate-900 text-white text-center text-xs sm:text-sm py-2 px-4">
-        <span className="opacity-90">Now booking 2 new Private‑Label Intelligence Cells for Q4 2025.</span>
-      </div>
-
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
