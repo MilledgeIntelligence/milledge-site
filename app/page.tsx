@@ -103,12 +103,14 @@ const Page: React.FC = () => {
       {/* Navigation */}
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="h-8 w-8 rounded-lg bg-slate-900" aria-hidden />
-            <span className="font-semibold tracking-tight">
-              Milledge Intelligence
-            </span>
-          </div>
+         <div className="flex items-center gap-3">
+  <img
+    src="/54E1E202-7964-4DBB-83B0-A29734AD658A.PNG"
+    alt="Milledge logo"
+    className="h-8 w-auto"
+  />
+  <span className="font-semibold tracking-tight">Milledge Intelligence</span>
+</div>
           <div className="hidden md:flex items-center gap-8 text-sm">
             <a href="#offerings" className="hover:text-slate-600">
               Engagement Deliverables
