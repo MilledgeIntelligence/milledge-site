@@ -105,9 +105,9 @@ const Page: React.FC = () => {
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
          <div className="flex items-center gap-3">
   <img
-    src="/54E1E202-7964-4DBB-83B0-A29734AD658A.PNG"
-    alt="Milledge logo"
-    className="h-8 w-auto"
+  src="/milledge-logo.png"
+  alt="Milledge logo"
+  className="h-8 w-auto"
   />
   <span className="font-semibold tracking-tight">Milledge Intelligence</span>
 </div>
