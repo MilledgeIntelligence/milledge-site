@@ -468,8 +468,13 @@ const Page: React.FC = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
             <div className="flex items-center gap-3">
-              <div className="h-7 w-7 rounded-lg bg-slate-900" aria-hidden />
-              <span>Milledge Intelligence LLC</span>
+              <img
+  src="/milledge-logo.png"
+  alt="Milledge logo"
+  className="h-7 w-auto"
+  loading="lazy"
+/>
+<span>Milledge Intelligence LLC</span>
             </div>
             <div className="flex items-center gap-6">
               <a className="hover:text-slate-700" href="#">
