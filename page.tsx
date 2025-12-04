@@ -32,7 +32,7 @@ export default function MilledgeLanding() {
     }
   }, []);
 
-  const track = (name, props = {}) => {
+  const track = (name: string, props: Record<string, unknown> = {}) => {
     if (typeof window === "undefined") return;
     if (window.plausible) {
       window.plausible(name, { props });
